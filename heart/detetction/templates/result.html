@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>CAD</title>
+	<meta name="description" content="Free Responsive Html5 Css3 Templates ">
+	<meta name="author" content="#">
+	
+    <!-- Mobile Specific Metas
+	================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- CSS
+	================================================== -->
+  	<link rel="stylesheet" href="static/css/zerogrid.css">
+	<link rel="stylesheet" href="static/css/style.css">
+	
+	<!-- Custom Fonts -->
+    <link href="static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+	
+	<link rel="stylesheet" href="static/css/menu.css">
+	<script src="static/js/jquery1111.min.js" type="text/javascript"></script>
+	<script src="static/js/script.js"></script>
+	
+	<!-- Owl Carousel Assets -->
+    <link href="static/owl-carousel/owl.carousel.css" rel="stylesheet">
+	<!-- <link href="owl-carousel/owl.theme.css" rel="stylesheet"> -->
+	
+	<!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/Items/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+		<script src="js/html5.js"></script>
+		<script src="js/css3-mediaqueries.js"></script>
+	<![endif]-->
+	
+</head>
+
+<body>
+	<div class="wrap-body">
+		<div id='cssmenu' class="align-center">
+			<ul>
+			   {% if request.session.is_login %}
+                    <li class="active"><a href='{% url 'index' %}'><span>Home</span></a></li>
+                    <li><a href='{% url 'single' %}'><span>About Data</span></a></li>
+                    <li><a href='{% url 'logout' %}'><span>Logout</span></a></li>
+                    <li class='last'><a href='{% url 'upload' %}'><span>Upload</span></a></li>
+                    <li class='last'><a href='{% url 'result' %}'><span>Result</span></a></li>
+                {% else %}
+                    <li class="active"><a href='{% url 'index' %}'><span>Home</span></a></li>
+                    <li><a href='{% url 'single' %}'><span>About Data</span></a></li>
+                    <li><a href='{% url 'register' %}'><span>Register</span></a></li>
+				    <li><a href='{% url 'login' %}'><span>login</span></a></li>
+                {% endif %}
+			</ul>
+		</div>
+		<header class="">
+			<div class="logo">
+				<a href="#"><img src="static/images/BMKnowledge.png" /></a>
+			</div>
+		</header>
+        <section id="container">
+			<div class="wrap-container">
+				<!-----------------Content-Box-------------------->
+				<article class="post zerogrid">
+						<div class="entry-header">
+							<h2 class="entry-title"><a href="#">Diagnose results</a></h2>
+						</div>
+						<div class="post-thumbnail-wrap">
+
+{#                        <h2>The artery classified to be [RCA], with probability 0.976.png</h2>#}
+{#                        <img src="static/images/baifuqiang.jpg">#}
+                            {% for i in imgs %}
+                                <h2>{{ i.filename }}</h2>
+							    <img src="{{ i.location }}">
+                            {% endfor %}
+					</div>
+				</article>
+			</div>
+		</section>
+		<!--////////////////////////////////////Footer-->
+		<footer>
+			<div class="zerogrid wrap-footer">
+				<div class="wrapper">
+                    <div class="wrap-col">
+                        <h3>About us</h3>
+                        <a href="index.html"><img src="static/images/jlu_logo.png" /></a>
+                        <p style="text-align: justify; text-justify: inter-ideograph;text-indent: 2em">
+                            Jilin University located in Changchun, founded in 1946, is a leading national research university under the direct jurisdiction of China's Ministry of Education.It is a Chinese Ministry of Education Class A Double First Class University.It is strongly supported by state key projects such as Project 985, Project 211 and Project 2011.
+                        </p>
+                    </div>
+				</div>
+			</div>
+			<div class="zerogrid copyright">
+				<div class="wrapper">
+					2019 © Knowledge Engineering and Machine Learning Group. All Rights Reserved
+				</div>
+			</div>
+		</footer>
+		<!-- carousel -->
+		<script src="static/owl-carousel/owl.carousel.js"></script>
+		<script>
+		$(document).ready(function() {
+		  $("#owl-slide").owlCarousel({
+			autoPlay: 3000,
+			items : 2,
+			itemsDesktop : [1199,2],
+			itemsDesktopSmall : [979,1],
+			itemsTablet : [768, 1],
+			itemsMobile : [479, 1],
+			navigation: true,
+			navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
+			pagination: false
+		  });
+		});
+		</script>
+	</div>
+</body>
+</html>
